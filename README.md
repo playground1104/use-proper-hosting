@@ -1,5 +1,11 @@
 # use-proper-hosting
-No more support server flooding with questions about unsupported hosting.
+No more support server flooding with questions about unsupported hosting.  
+If you want to block other hosting platform, feel free to contribute.
+
+## Installation
+```
+pip install -U use-proper-hosting
+```
 
 ## Example
 
