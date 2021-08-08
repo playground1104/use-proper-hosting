@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="UTF-8") as f:
 
 setuptools.setup(
     name="use-proper-hosting",
-    version="1.0.0",
+    version="1.0.1",
     author="eunwoo1104",
     author_email="sions04@naver.com",
     description="No more support server flooding with questions about unsupported hosting.",

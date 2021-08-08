@@ -1,6 +1,7 @@
 import os
+import sys
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 
 class PleaseUseProperHosting(Exception):
@@ -12,17 +13,21 @@ class PleaseUseProperHosting(Exception):
                          f"Why not trying to find those?\n{extra_words}")
 
 
-def detect_repl():
+def detect_repl(safe: bool = False):
     """
     Detects if this platform is Replit.
 
+    :param safe: Whether to just display text. Default False.
+
     :raises PleaseUseProperHosting: Yes, you are using Replit.
     """
-    repl_keys = ['REPL_SLUG', 'REPL_IMAGE', 'REPL_ID', 'REPL_OWNER', 'REPLIT_DB_URL', 'REPL_LANGUAGE', 'REPL_PUBKEYS']
-    resp = [x for x in os.environ if x in repl_keys]
-    if resp:
-        extra_words = "Oh, and since you are using Replit, if your plan is not hacker or above, using Replit as hosting is against their ToS."
-        raise PleaseUseProperHosting("Replit", os.environ.get("REPL_OWNER", "there"), extra_words)
+    if [x for x in os.environ if x in ['REPL_SLUG', 'REPL_IMAGE', 'REPL_ID', 'REPL_OWNER', 'REPLIT_DB_URL', 'REPL_LANGUAGE', 'REPL_PUBKEYS']]:
+        ex = PleaseUseProperHosting("Replit",
+                                    os.environ.get("REPL_OWNER", "there"),
+                                    "Oh, and since you are using Replit, if your plan is not hacker or above, using Replit as hosting is against their ToS.")
+        if safe:
+            return print(str(ex), file=sys.stderr)
+        raise ex
 
 
 if __name__ == "__main__":
