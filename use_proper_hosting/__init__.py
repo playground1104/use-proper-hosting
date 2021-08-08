@@ -1,5 +1,7 @@
 import os
 
+__version__ = "1.0.0"
+
 
 class PleaseUseProperHosting(Exception):
     def __init__(self, platform: str, username: str = "there", extra_words: str = ""):
