@@ -8,3 +8,4 @@ from use_proper_hosting import detect_repl
 
 detect_repl()
 ```
+![](https://github.com/playground1104/use-proper-hosting/blob/master/.github/example.png?raw=true)
